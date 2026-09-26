@@ -1,0 +1,33 @@
+[project]
+config_version = 1
+
+[package]
+name = "@ing-electrica/tif"
+version = "0.1.0"
+displayName = "Ingeniería Eléctrica TIF Template & Layout"
+description = "Plantilla oficial de perfil de Trabajo de Investigación Formativa (TIF) de Ingeniería Eléctrica (UNSA) con portada institucional, índice formal y contenidos del manual de redacción"
+tags = ["unsa", "electrica", "tif", "perfil", "template", "investigacion"]
+command_prefix = "tif"
+
+[dependencies]
+"@unsareport/define" = "^0.1.0"
+"@ing-electrica/tif-theming" = "^0.1.0"
+
+[components]
+files = ["lib.typ", "scripts/**/*", "img/**/*"]
+
+[templates]
+files = ["template/**/*"]
+
+[commands.copy-report]
+description = "Copy compiled report to a formatted filename based on exported metadata (reads UNSAREP_CONFIG_TIF_FILENAME_FORMAT)"
+commands = { any = ["bun components/@ing-electrica/tif/scripts/copy_report.ts"] }
+
+[hooks.build]
+after = ["copy-report"]
+
+[config-schema.filename_format]
+type = "string"
+required = true
+default = "TIF Equipo {group} - {title_short}.pdf"
+doc = "Format string for renaming compiled report. Tokens: {group}, {authors_short}, {year}, {title}, {title_short}, {school}, etc. Passed to the copy-report hook as UNSAREP_CONFIG_TIF_FILENAME_FORMAT."

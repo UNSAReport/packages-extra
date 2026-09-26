@@ -1,0 +1,38 @@
+name: Publish Scope Packages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Publish Scope Packages (${{ matrix.dir }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dir:
+          - ing-electrica
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Publish Scope Packages
+        uses: UNSAReport/UNSAReport2/actions/publish@dev
+        with:
+          token: ${{ secrets.UNSAREP_TOKEN || 'unsareport_pat_00000000000000000000000000000000' }}
+          dir: ${{ matrix.dir }}
+          mode: 'scope'
+          packages-dir: '.'
+          check: 'true'
+          dry-run: ${{ github.event_name == 'pull_request' }}
+          cache: 'true'
+          cache-key-prefix: unsarep-cache-${{ matrix.dir }}
