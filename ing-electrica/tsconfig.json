@@ -6,7 +6,8 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@ing-electrica/*": ["./*"]
+      "@ing-electrica/*": ["./*"],
+      "@unsareport/*": ["../components/@unsareport/*"]
     }
   }
 }
