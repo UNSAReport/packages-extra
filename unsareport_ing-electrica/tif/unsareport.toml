@@ -3,7 +3,7 @@ config_version = 1
 
 [package]
 name = "@unsareport_ing-electrica/tif"
-version = "0.1.0"
+version = "0.1.1"
 displayName = "Ingeniería Eléctrica TIF Template & Layout"
 description = "Plantilla oficial de perfil de Trabajo de Investigación Formativa (TIF) de Ingeniería Eléctrica (UNSA) con portada institucional, índice formal y contenidos del manual de redacción"
 tags = ["unsa", "electrica", "tif", "perfil", "template", "investigacion"]

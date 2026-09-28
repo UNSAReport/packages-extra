@@ -1,4 +1,4 @@
-#import "/components/@ing-electrica/tif-theming/lib.typ": *
+#import "/components/@unsareport_ing-electrica/tif-theming/lib.typ": *
 #import "/components/@unsareport/define/lib.typ": define, get-var, get-all-vars
 #import "/components/@unsareport/autoindent/lib.typ": (
   autoindent,

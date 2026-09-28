@@ -1,4 +1,4 @@
-#import "/components/@ing-electrica/tif/lib.typ": tif, no-indent-block, force-indent-block
+#import "/components/@unsareport_ing-electrica/tif/lib.typ": tif, no-indent-block, force-indent-block
 
 #show: tif.with(
   title: [TÍTULO DEL PLAN DE TRABAJO DE INVESTIGACIÓN PARA SU REVISIÓN Y REGISTRO EN LA UNIDAD DE INVESTIGACIÓN],
