@@ -3,7 +3,7 @@ config_version = 1
 
 [package]
 name = "@unsareport_ing-electrica/tif"
-version = "0.1.1"
+version = "0.2.0"
 displayName = "Ingeniería Eléctrica TIF Template & Layout"
 description = "Plantilla oficial de perfil de Trabajo de Investigación Formativa (TIF) de Ingeniería Eléctrica (UNSA) con portada institucional, índice formal y contenidos del manual de redacción"
 tags = ["unsa", "electrica", "tif", "perfil", "template", "investigacion"]
@@ -18,14 +18,14 @@ command_prefix = "tif"
 files = ["tsconfig.unsareport.json"]
 
 [components]
-files = ["lib.typ", "scripts/**/*", "img/**/*", "tsconfig.unsareport.json"]
+files = ["lib.typ", "README.md", "scripts/**/*", "img/**/*", "tsconfig.unsareport.json"]
 
 [templates]
 files = ["template/**/*"]
 
 [commands.copy-report]
 description = "Copy compiled report to a formatted filename based on exported metadata (reads UNSAREP_CONFIG_TIF_FILENAME_FORMAT)"
-commands = { any = ["bun run --tsconfig-override tsconfig.unsareport.json components/@ing-electrica/tif/scripts/copy_report.ts"] }
+commands = { any = ["bun run --tsconfig-override tsconfig.unsareport.json components/@unsareport_ing-electrica/tif/scripts/copy_report.ts"] }
 
 [hooks.build]
 after = ["copy-report"]

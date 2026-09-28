@@ -2,7 +2,7 @@ import { copyFileSync, existsSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { readVars } from "@unsareport/define/scripts/read-vars.ts";
 
-const PACKAGE_NAME = "@ing-electrica/tif";
+const PACKAGE_NAME = "@unsareport_ing-electrica/tif";
 const CONFIG_FILENAME = "unsareport.toml";
 const REPORT_DIR_ENV = "UNSAREP_REPORT_DIR";
 const TYPST_ENTRY_ENV = "UNSAREP_TYPST_ENTRY";

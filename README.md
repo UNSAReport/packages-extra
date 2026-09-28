@@ -6,4 +6,4 @@ A diferencia de los paquetes bajo el scope principal `@unsareport` (mantenidos a
 
 ## Estructura de Scopes
 
-- [`@unsareport_ing-electrica`](ing-electrica/): Escuela Profesional de Ingeniería Eléctrica (UNSA).
+- [`@unsareport_ing-electrica`](unsareport_ing-electrica/): Escuela Profesional de Ingeniería Eléctrica (UNSA).

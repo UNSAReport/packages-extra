@@ -3,14 +3,14 @@ config_version = 1
 
 [package]
 name = "@unsareport_ing-electrica/tif-theming"
-version = "0.1.0"
+version = "0.2.0"
 displayName = "Ingeniería Eléctrica TIF Theming"
 description = "Theme variables, typography, margins, paragraph spacing, heading sizes, and table styling for UNSA Electrical Engineering TIF reports"
 tags = ["theme", "unsa", "electrica", "tif", "theming", "perfil"]
 command_prefix = "tif-theming"
 
 [components]
-files = ["lib.typ"]
+files = ["lib.typ", "README.md"]
 
 [templates]
 files = []
