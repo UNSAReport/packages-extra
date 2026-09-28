@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         dir:
-          - ing-electrica
+          - unsareport_ing-electrica
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
