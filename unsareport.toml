@@ -2,4 +2,4 @@
 config_version = 1
 
 [workspace]
-packages = ["ing-electrica/*"]
+packages = ["unsareport_ing-electrica/*"]
