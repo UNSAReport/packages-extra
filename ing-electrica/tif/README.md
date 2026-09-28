@@ -1,21 +1,27 @@
-# `@ing-electrica/tif`
+# @ing-electrica/tif
 
 Plantilla institucional y formato oficial para la elaboración del **Perfil de Trabajo de Investigación Formativa (TIF)** de la **Escuela Profesional de Ingeniería Eléctrica** de la Universidad Nacional de San Agustín de Arequipa (UNSA).
 
 Este paquete implementa con precisión las directrices del _Manual para la elaboración, estructuración y redacción de plan del trabajo de investigación formativo (Perfil TIF)_.
 
-## Características
+## Arquitectura
 
-- **Carátula Institucional UNSA**: Escudo oficial de la universidad, membrete reglamentario de la Facultad de Ingeniería de Producción y Servicios y Escuela Profesional de Ingeniería Eléctrica, metadatos de autores, asesor, número de equipo y año.
-- **Índice Formal Automatizado**: Generación automática de tabla de contenidos (`ÍNDICE`) con numeración jerárquica contextual (`1.`, `1.1`, `1.1.1`).
-- **Márgenes Académicos Reglamentarios**: Margen izquierdo de 3.0 cm para empastado/encuadernación, márgenes superior, inferior y derecho de 2.5 cm.
-- **Estructura Completa del Manual TIF**:
-  1. *Introducción* (con guía de redacción y conectores textuales).
-  2. *Planteamiento del Problema* (descripción, formulación, objetivos generales/específicos, tabla de verbos infinitivos clasificados por nivel investigativo, justificaciones e hipótesis).
-  3. *Marco Teórico* (antecedentes, bases teóricas y términos básicos).
-  4. *Metodología* (nivel, diseño, análisis y validación de datos, y cronograma / diagrama de Gantt).
-  5. *Referencias Bibliográficas* (formato IEEE / APA).
-- **Integración con UNSAReport**: Exportación automática de metadatos (`title`, `authors`, `advisor`, `group`, `year`) y soporte para hook post-build de renombrado automático (`filename_format`).
+El diseño sigue una estricta separación de responsabilidades en tres niveles:
+
+1. **Valores Fijos (Fixed Constants)**:
+   - Constantes institucionales y departamentales (`INSTITUTION-UNIVERSITY`, `INSTITUTION-FACULTY`, `INSTITUTION-SCHOOL`, `INSTITUTION-CITY-COUNTRY`, `DEFAULT-LOGO-PATH`).
+   - Etiquetas reglamentarias de carátula (`COVER-LABEL-COURSE`, `COVER-LABEL-ADVISOR`, `COVER-LABEL-AUTHORS`, `COVER-LABEL-TEAM-PREFIX`).
+   - Estructura formal obligatoria de la plantilla (índice formal automatizado de nivel 3 con título `ÍNDICE`).
+   - Marcas y reglas internas del motor de sangría jerárquica contextual y tablas.
+   - Nombres normalizados de metadatos exportados (`VAR-*`).
+
+2. **Configuración Global (Global Theming)**:
+   - Centralizado en `@ing-electrica/tif-theming`.
+   - Variables de diseño visual: tipografía, geometría de página, margen izquierdo de encuadernación (3.0 cm), espaciado de párrafos, jerarquía de tamaños de títulos, colores y trazos de tablas.
+
+3. **Parámetros por Informe (Per-Report Settings)**:
+   - Únicamente los datos específicos de cada trabajo de investigación.
+   - **Cero fallbacks**: sin cadenas de sinónimos (`docente`/`asesor`/`teacher` unificados estrictamente en `advisor`; `curso` unificado en `course`), sin adivinación especulativa de cadenas cortas (`title_short`, `authors_short`), y sin sobreescritura local de valores institucionales o de tema.
 
 ## Uso Básico
 
@@ -23,15 +29,17 @@ Este paquete implementa con precisión las directrices del _Manual para la elabo
 #import "/components/@ing-electrica/tif/lib.typ": tif, no-indent-block, force-indent-block
 
 #show: tif.with(
-  title: [DISEÑO Y ANÁLISIS DE ESTABILIDAD DE UN SISTEMA ELÉCTRICO DE POTENCIA],
-  title_short: "Estabilidad-SEP",
+  title: [TÍTULO DEL PLAN DE TRABAJO DE INVESTIGACIÓN PARA SU REVISIÓN Y REGISTRO EN LA UNIDAD DE INVESTIGACIÓN],
+  title_short: "TIF",
+  year_motto: "“Año de la Esperanza y el Fortalecimiento de la Democracia”",
+  course: "ANÁLISIS DE SISTEMAS DE POTENCIA 1",
   group: "01",
+  advisor: "Mg. / Dr. Nombres y Apellidos del Asesor",
   authors: (
-    "Nombres y Apellidos del Estudiante 1",
-    "Nombres y Apellidos del Estudiante 2",
+    "Nombres y Apellidos Completos - Integrante 1 / 20201234",
+    "Nombres y Apellidos Completos - Integrante 2 / 20215678",
   ),
-  advisor: "Dr. Ing. Asesor del Proyecto",
-  year: none, // Detecta automáticamente el año en curso
+  authors_short: "Integrante1-Integrante2",
 )
 
 #include "sections/1-introduccion.typ"
@@ -41,20 +49,28 @@ Este paquete implementa con precisión las directrices del _Manual para la elabo
 #include "sections/5-referencias.typ"
 ```
 
-## Parámetros de Configuración
+## Parámetros de `tif`
 
-| Parámetro | Tipo | Por defecto | Descripción |
-|---|---|---|---|
-| `title` | `content` \| `str` | Requerido | Título oficial del plan TIF en mayúsculas |
-| `title_short` | `str` | `none` | Título abreviado para nombres de archivo |
-| `group` | `str` \| `int` | `"01"` | Número de equipo de trabajo |
-| `authors` | `array` \| `str` | `()` | Lista completa de integrantes del equipo |
-| `authors_short` | `str` | `none` | Cadena corta de autores para renombrado |
-| `advisor` | `str` | `"xxxxxxxxxxxxxxxx."` | Nombre y grado académico del docente asesor |
-| `year` | `str` \| `int` | `none` | Año de presentación (por defecto año actual) |
-| `university` | `str` | `"UNIVERSIDAD NACIONAL DE SAN AGUSTÍN"` | Nombre institucional |
-| `faculty` | `str` | `"FACULTAD DE INGENIERÍA DE PRODUCCIÓN Y SERVICIOS"` | Facultad |
-| `school` | `str` | `"ESCUELA PROFESIONAL DE INGENIERÍA ELÉCTRICA"` | Escuela profesional |
-| `city_country` | `str` | `"AREQUIPA, PERÚ"` | Lugar institucional |
-| `include_outline` | `bool` | `true` | Incluye página de índice automatizado |
-| `outline_title` | `str` \| `content` | `"ÍNDICE"` | Título de la tabla de contenidos |
+| Parámetro | Tipo | Descripción |
+|---|---|---|
+| `title` | `content` \| `str` | Título oficial del plan TIF en mayúsculas |
+| `title_short` | `str` | Título abreviado del trabajo para nombrado de archivos |
+| `year_motto` | `str` | Lema oficial del año en curso |
+| `course` | `str` | Nombre de la asignatura |
+| `group` | `str` \| `int` | Número identificador del equipo de trabajo |
+| `advisor` | `str` | Grado y nombres completos del docente asesor |
+| `authors` | `array` \| `str` | Integrantes del equipo (admite formato `"Nombre / CUI"` o `(name: "...", cui: "...")`) |
+| `authors_short` | `str` | Identificador compacto de autores para nombrado de archivos |
+| `year` | `str` \| `int` | Año lectivo (opcional, por defecto año calendario actual) |
+| `custom_variables` | `dictionary` | Metadatos adicionales para exportar vía `@unsareport/define` |
+
+## Renombrado Post-Build
+
+El hook `copy-report` toma los metadatos exportados y renombra el PDF resultante según el patrón configurado en `unsareport.toml`:
+
+```toml
+[config-schema.filename_format]
+default = "TIF Equipo {group} - {title_short}.pdf"
+```
+
+Tokens disponibles: `{title}`, `{title_short}`, `{year_motto}`, `{course}`, `{group}`, `{advisor}`, `{authors_short}`, `{year}`, `{university}`, `{faculty}`, `{school}`, `{city_country}`.

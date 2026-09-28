@@ -1,7 +1,9 @@
 [project]
 config_version = 1
 
+[workspace]
+packages = ["*"]
+
 [scope]
-name = "@ing-electrica"
+name = "@unsareport_ing-electrica"
 description = "Plantillas, temas y componentes de la Escuela Profesional de Ingeniería Eléctrica (UNSA)"
-files = ["tsconfig.json"]

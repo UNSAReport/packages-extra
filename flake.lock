@@ -145,11 +145,11 @@
         "nixpkgs-unstable": "nixpkgs-unstable_2"
       },
       "locked": {
-        "lastModified": 1790468718,
-        "narHash": "sha256-rUKNwWbpkJKroHLnMt0yYr1QVZg57e7owVjOlgToURE=",
+        "lastModified": 1790570713,
+        "narHash": "sha256-rqq6eCrMKFosNPnskhVe+hZ90Fa92Y8SmhiF5SFOspI=",
         "owner": "UNSAReport",
         "repo": "UNSAReport2",
-        "rev": "f041716fd76ae9f2245a4c69175945a5071d25ec",
+        "rev": "b64b1fc98bc4e0c5e430f821a67bfd416999a95a",
         "type": "github"
       },
       "original": {

@@ -23,11 +23,11 @@
 #let heading-weight = "bold"
 #let heading-space-above = 1.25em
 #let heading-space-below = 0.75em
-#let title-text-size = 13.5pt
+#let title-text-size = 16pt
 #let title-weight = "bold"
 #let title-space-below = 1.2em
 
-#let indent-width = 12pt
+#let indent-width = 6pt
 #let num-gutter = 0.6em
 
 #let table-header-fill = rgb("f3f4f6")
@@ -37,10 +37,14 @@
 
 #let cover-logo-width = 4.2cm
 #let cover-metadata-align = left
+#let cover-metadata-left-inset = 0pt
 #let cover-author-cui-gutter = 0.8cm
-#let default-university = "UNIVERSIDAD NACIONAL DE SAN AGUSTÍN DE AREQUIPA"
-#let default-faculty = "FACULTAD DE INGENIERÍA DE PRODUCCIÓN Y SERVICIOS"
-#let default-school = "ESCUELA PROFESIONAL DE INGENIERÍA ELÉCTRICA"
-#let default-document-type = "PLAN DE TRABAJO DE INVESTIGACIÓN FORMATIVA"
-#let default-team-label = "Plan del trabajo de investigación formativo del equipo de trabajo"
-#let default-city-country = "AREQUIPA - PERÚ"
+#let cover-motto-size = 13pt
+#let cover-university-size = 15pt
+#let cover-faculty-size = 13pt
+#let cover-school-size = 13pt
+#let cover-title-size = 16pt
+#let cover-team-size = 14pt
+#let cover-metadata-size = 11pt
+#let cover-location-size = 12pt
+#let cover-year-size = 12pt
