@@ -12,7 +12,7 @@ command_prefix = "tif"
 [dependencies]
 "@unsareport/define" = "^0.1.0"
 "@unsareport/autoindent" = "^0.1.0"
-"@ing-electrica/tif-theming" = "^0.1.0"
+"@unsareport_ing-electrica/tif-theming" = "^0.1.0"
 
 [root-files]
 files = ["tsconfig.unsareport.json"]
