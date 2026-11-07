@@ -7,3 +7,4 @@ A diferencia de los paquetes bajo el scope principal `@unsareport` (mantenidos a
 ## Estructura de Scopes
 
 - [`@unsareport_ing-electrica`](unsareport_ing-electrica/): Escuela Profesional de Ingeniería Eléctrica (UNSA).
+- [`@unsareport_general`](unsareport_general/): Plantillas, formatos y documentos de uso general y administrativo (no académicos).

@@ -1,0 +1,9 @@
+[project]
+config_version = 1
+
+[workspace]
+packages = ["*"]
+
+[scope]
+name = "@unsareport_general"
+description = "Plantillas, documentos y formatos de uso general y administrativo de UNSAReport (no académicos)"

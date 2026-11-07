@@ -3,7 +3,7 @@ config_version = 1
 
 [package]
 name = "@unsareport_ing-electrica/tif"
-version = "0.2.0"
+version = "0.2.1"
 displayName = "Ingeniería Eléctrica TIF Template & Layout"
 description = "Plantilla oficial de perfil de Trabajo de Investigación Formativa (TIF) de Ingeniería Eléctrica (UNSA) con portada institucional, índice formal y contenidos del manual de redacción"
 tags = ["unsa", "electrica", "tif", "perfil", "template", "investigacion"]
@@ -33,5 +33,5 @@ after = ["copy-report"]
 [config-schema.filename_format]
 type = "string"
 required = true
-default = "TIF Equipo {group} - {title_short}.pdf"
-doc = "Format string for renaming compiled report. Tokens: {group}, {authors_short}, {year}, {title}, {title_short}, {school}, etc. Passed to the copy-report hook as UNSAREP_CONFIG_TIF_FILENAME_FORMAT."
+default = "TIF Equipo {group} - {title-short}.pdf"
+doc = "Format string for renaming compiled report. Tokens: {group}, {authors-short}, {year}, {title}, {title-short}, {year-motto}, {course}, {advisor}, {authors}, {school}, {faculty}, {university}, {city-country}. Passed to the copy-report hook as UNSAREP_CONFIG_TIF_FILENAME_FORMAT."

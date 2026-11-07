@@ -14,18 +14,18 @@
 )
 
 #let VAR-TITLE = "title"
-#let VAR-TITLE-SHORT = "title_short"
+#let VAR-TITLE-SHORT = "title-short"
 #let VAR-COURSE = "course"
 #let VAR-GROUP = "group"
 #let VAR-ADVISOR = "advisor"
-#let VAR-YEAR-MOTTO = "year_motto"
+#let VAR-YEAR-MOTTO = "year-motto"
 #let VAR-AUTHORS = "authors"
-#let VAR-AUTHORS-SHORT = "authors_short"
+#let VAR-AUTHORS-SHORT = "authors-short"
 #let VAR-YEAR = "year"
 #let VAR-UNIVERSITY = "university"
 #let VAR-FACULTY = "faculty"
 #let VAR-SCHOOL = "school"
-#let VAR-CITY-COUNTRY = "city_country"
+#let VAR-CITY-COUNTRY = "city-country"
 
 #let INSTITUTION-UNIVERSITY = "UNIVERSIDAD NACIONAL DE SAN AGUSTÍN DE AREQUIPA"
 #let INSTITUTION-FACULTY = "FACULTAD DE INGENIERÍA DE PRODUCCIÓN Y SERVICIOS"
@@ -405,25 +405,25 @@
 
 #let tif(
   title: none,
-  title_short: none,
-  year_motto: none,
+  title-short: none,
+  year-motto: none,
   course: none,
   group: none,
   advisor: none,
   authors: none,
-  authors_short: none,
+  authors-short: none,
   year: none,
-  custom_variables: (:),
+  custom-variables: (:),
   doc,
 ) = {
   let resolved-title = if is-empty-value(title) { PLACEHOLDER-TITLE } else { title }
-  let resolved-title-short = if is-empty-value(title_short) { PLACEHOLDER-TITLE-SHORT } else { title_short }
-  let resolved-year-motto = if is-empty-value(year_motto) { PLACEHOLDER-YEAR-MOTTO } else { year_motto }
+  let resolved-title-short = if is-empty-value(title-short) { PLACEHOLDER-TITLE-SHORT } else { title-short }
+  let resolved-year-motto = if is-empty-value(year-motto) { PLACEHOLDER-YEAR-MOTTO } else { year-motto }
   let resolved-course = if is-empty-value(course) { PLACEHOLDER-COURSE } else { course }
   let resolved-group = if is-empty-value(group) { PLACEHOLDER-GROUP } else { str(group) }
   let resolved-advisor = if is-empty-value(advisor) { PLACEHOLDER-ADVISOR } else { advisor }
   let resolved-authors = resolve-authors(authors)
-  let resolved-authors-short = if is-empty-value(authors_short) { PLACEHOLDER-AUTHORS-SHORT } else { authors_short }
+  let resolved-authors-short = if is-empty-value(authors-short) { PLACEHOLDER-AUTHORS-SHORT } else { authors-short }
   let resolved-year = if is-empty-value(year) { str(datetime.today().year()) } else { str(year) }
 
   register-document-metadata(
@@ -436,7 +436,7 @@
     authors: resolved-authors,
     authors-short: to-string(resolved-authors-short),
     year: resolved-year,
-    custom-variables: custom_variables,
+    custom-variables: custom-variables,
   )
 
   show: apply-typography-rules

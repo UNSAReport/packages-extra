@@ -1,0 +1,35 @@
+[project]
+config_version = 1
+
+[package]
+name = "@unsareport_general/solicitud-simple"
+version = "0.1.0"
+displayName = "Solicitud Simple"
+description = "Plantilla formal de solicitud simple y administrativa con encabezado oficial, asunto, referencia, destinatario, cuerpo, anexos y doble sección de firma y huella (solicitante y destinatario/autoridad)"
+tags = ["solicitud", "tramite", "general", "template", "administrativo"]
+command_prefix = "solicitud-simple"
+
+[dependencies]
+"@unsareport/define" = "^0.1.0"
+
+[root-files]
+files = ["tsconfig.unsareport.json"]
+
+[components]
+files = ["lib.typ", "README.md", "scripts/**/*", "img/**/*", "tsconfig.unsareport.json"]
+
+[templates]
+files = ["template/**/*"]
+
+[commands.copy-report]
+description = "Copy compiled report to a formatted filename based on exported metadata (reads UNSAREP_CONFIG_SOLICITUD_SIMPLE_FILENAME_FORMAT)"
+commands = { any = ["bun run --tsconfig-override tsconfig.unsareport.json components/@unsareport_general/solicitud-simple/scripts/copy_report.ts"] }
+
+[hooks.build]
+after = ["copy-report"]
+
+[config-schema.filename_format]
+type = "string"
+required = true
+default = "Solicitud - {asunto}.pdf"
+doc = "Format string for renaming compiled report. Tokens: {asunto}, {asunto-cap}, {asunto-corto}, {solicitante}, {fecha}, {lugar}, {referencia}, {destinatario}, {lema-anio}, {peticion}. Passed to the copy-report hook as UNSAREP_CONFIG_SOLICITUD_SIMPLE_FILENAME_FORMAT."
